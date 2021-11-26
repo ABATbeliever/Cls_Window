@@ -1,0 +1,19 @@
+@echo off
+title Cls_Window
+set ra=%random%
+goto loop
+:loop
+tasklist
+echo.
+set tk=%ra%
+set ac=Y
+set /p tk="TASKKILL?(TYPE "Cls_Window" to exit):"
+if %tk% == %ra% (goto loop)
+if %tk% == Cls_Window (exit)
+echo.
+set /p ac="TASKKILL %tk%?(Y/N):"
+if %ac% == y (TASKKILL /IM %tk%.exe
+goto loop)
+if %ac% == Y (TASKKILL /IM %tk%.exe
+goto loop)
+goto loop
